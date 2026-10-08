@@ -13,7 +13,7 @@ function App() {
 
   const getStudents = async () => {
     try {
-      const response = await axios.get("https://student-mern-server.vercel.app/");
+      const response = await axios.get("https://student-mern-server.vercel.app/students");
       setStudents(response.data);
     } catch (error) {
       console.log("Failed to load students:", error);
@@ -30,10 +30,10 @@ function App() {
     try {
       if (editingId) {
         await axios.put(
-          `https://student-mern-server.vercel.app/${editingId}`, data
+          `https://student-mern-server.vercel.app/students${editingId}`, data
         );
       } else {
-        await axios.post("https://student-mern-server.vercel.app/", data);
+        await axios.post("https://student-mern-server.vercel.app/students", data);
       }
       setName("");
       setCourse("");
@@ -48,7 +48,7 @@ function App() {
 
   const deleteStudent = async (id) => {
     try {
-      await axios.delete(`https://student-mern-server.vercel.app/${id}`);
+      await axios.delete(`https://student-mern-server.vercel.app/students${id}`);
       await getStudents();
     } catch (error) {
       console.log(error);
@@ -67,7 +67,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://student-mern-server.vercel.app/")
+      .get("https://student-mern-server.vercel.app/students")
       .then((response) => {
         setStudents(response.data)
       })
