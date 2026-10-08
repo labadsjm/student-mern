@@ -13,7 +13,7 @@ function App() {
 
   const getStudents = async () => {
     try {
-      const response = await axios.get("https://student-mern-server.vercel.app/students");
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/students`);
       setStudents(response.data);
     } catch (error) {
       console.log("Failed to load students:", error);
@@ -30,10 +30,10 @@ function App() {
     try {
       if (editingId) {
         await axios.put(
-          `https://student-mern-server.vercel.app/students${editingId}`, data
+          `${import.meta.env.VITE_API_URL}/students${editingId}`, data
         );
       } else {
-        await axios.post("https://student-mern-server.vercel.app/students", data);
+        await axios.post(`${import.meta.env.VITE_API_URL}/students`, data);
       }
       setName("");
       setCourse("");
@@ -48,7 +48,7 @@ function App() {
 
   const deleteStudent = async (id) => {
     try {
-      await axios.delete(`https://student-mern-server.vercel.app/students${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/students.${id}`);
       await getStudents();
     } catch (error) {
       console.log(error);
@@ -67,7 +67,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://student-mern-server.vercel.app/students")
+      .get(`${import.meta.env.VITE_API_URL}/students`)
       .then((response) => {
         setStudents(response.data)
       })
