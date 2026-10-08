@@ -80,17 +80,17 @@ function App() {
       <h2 >{editingId ? "Edit Student" : "Add Student"}</h2>
 
       <p>Enter Name: </p>
-      <input placeholder="Enter Student Name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input className="input" placeholder="Enter Student Name" value={name} onChange={(e) => setName(e.target.value)} />
 
       <p>Enter Course: </p>
-      <input placeholder="Enter Student Course" value={course} onChange={(e) => setCourse(e.target.value)} />
+      <input className="input" placeholder="Enter Student Course" value={course} onChange={(e) => setCourse(e.target.value)} />
 
-      <p>Enter Age</p>
-      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
+      <p>Enter Age:</p>
+      <input className="input" type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
       <br/>
       
       <br/>
-      <button onClick={handleSubmit}>
+      <button className="submitButton" onClick={handleSubmit}>
 
         {editingId ? "Update Student" : "Add Student"}
       </button>
@@ -98,13 +98,13 @@ function App() {
       <h2>Students</h2>
 
       {students.map((student) => (
-        <div key={student._id}>
-          <p>Name: {student.name}</p>
-          <p>Course: {student.course}</p>
-          <p>Age: {student.age}</p>
+        <div className="studentsInfo" key={student._id}>
+          <p className="studentDisplay">Name: {student.name}</p>
+          <p className="studentDisplay">Course: {student.course}</p>
+          <p className="studentDisplay">Age: {student.age}</p>
 
-          <button onClick={() => editStudent(student)}>Edit</button>
-          <button onClick={() => deleteStudent(student._id)}>
+          <button className="editButton" onClick={() => editStudent(student)}>Edit</button><br/>
+          <button className="deleteButton" onClick={() => deleteStudent(student._id)}>
 
             Delete
           </button>
@@ -117,3 +117,6 @@ function App() {
 }
 
 export default App;
+
+
+//JOHN MICHAEL J. LABADOR INF_237
