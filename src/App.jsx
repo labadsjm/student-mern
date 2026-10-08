@@ -97,7 +97,7 @@ function App() {
 
       <h2>Students</h2>
 
-      {students.map((student) => (
+      {students.map((student) => ( 
         <div className="studentsInfo" key={student._id}>
           <p className="studentDisplay">Name: {student.name}</p>
           <p className="studentDisplay">Course: {student.course}</p>
@@ -108,7 +108,7 @@ function App() {
 
             Delete
           </button>
-
+ 
         </div>
 
       ))}
